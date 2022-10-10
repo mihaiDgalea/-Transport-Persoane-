@@ -1,0 +1,19 @@
+{% extends "layouts/layout.html" %}
+{% block content %}
+  <div class="content">
+    {% if soferi %}
+    Traseul <b>{{traseul_name[:3:]}}</b>:<br><br>
+    <table class="list">
+      <tr><th>Nume</th><th>Nr- Masina</th></tr>
+      {% for sid, sname, tname in soferi %}
+      <tr>
+        <td><a href="/soferi/{{sid}}">{{sname}}</a></td>
+        <td>{{traseul_name[3::]}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <div class="error">Traseul inexistent</div>
+    {% endif %}
+  </div>
+{% endblock content %}

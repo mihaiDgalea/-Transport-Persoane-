@@ -1,0 +1,118 @@
+<html>
+<head>
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>Transport Persoane Galati</title>
+  {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="image/png" sizes="32x32" rel="icon" href="/static/images/buss.png">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
+    <script src="{{ url_for('static', filename='scripts/script.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://fontawesome.com/icons/circle-check?s=solid&f=classic"></script>
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="header">
+        <svg height="130" width="200">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"
+                style="stop-color:rgb(255,255,0);stop-opacity:1" />
+                <stop offset="100%"
+                style="stop-color:rgb(255,0,0);stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <ellipse cx="100" cy="65" rx="70" ry="40" fill="url(#grad1)" />
+            <text fill="#ffffff" font-size="45" font-family="Verdana" x="49" y="80">TPG</text>
+        </svg>
+        <div id="navbar-right">
+            <a href="/acasa" class="btn"><i class="fa fa-home"></i> Acasa</a>
+            <a href="/soferi" class="btn"><i class="fa fa-user"></i>Soferi</a>
+            <a href="/rute" class="btn"><i class="fa fa-bus"></i>Rute</a>
+            <a href="/administratie" class="btn"><i class="fa fa-folder"></i>Administratie</a>
+
+        </div>
+    </div>
+  <div class="content">
+  {% block content %} {% endblock %}
+  </div>
+<script>
+const btnDelete= document.querySelectorAll('.btn-delete');
+if(btnDelete) {
+  const btnArray = Array.from(btnDelete);
+  btnArray.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      if(!confirm('Esti sigur ca vrei sa stergi?')){
+        e.preventDefault();
+      }
+    });
+  })
+}
+
+
+var numeError = document.getElementById('nume-error');
+var prenumeError = document.getElementById('prenume-error');
+var marcaError = document.getElementById('trs_id-error');
+var submitError = document.getElementById('submit-error');
+
+function validateNume(){
+    var nume = document.getElementById("contact-nume").value;
+
+    if(nume.length == 0){
+        numeError.innerHTML = 'Completeaza numele';
+        return false;
+    }
+    if(!nume.match(/^[A-Za-z]*$/)){
+        numeError.innerHTML = 'Numele incorect';
+        return false;
+    }
+    numeError.innerHTML = '<i class="fa fa-check icon"></i>';
+    return true;
+}
+
+function validatePrenume(){
+     var prenume = document.getElementById("contact-prenume").value;
+
+    if(prenume.length == 0){
+        prenumeError.innerHTML = 'Completeaza prenumele';
+        return false;
+    }
+    if(!prenume.match(/^[A-Za-z]*$/)){
+        prenumeError.innerHTML = 'Prenumele incorect';
+        return false;
+    }
+    prenumeError.innerHTML = '<i class="fa fa-check icon"></i>';
+    return true;
+}
+
+function validateMarca(){
+     var marca = document.getElementById("contact-marca").value;
+
+    if(marca.length == 0){
+        marcadError.innerHTML = 'Completeaza  nr. marca';
+        return false;
+    }
+    if(!marca.match(/^[0-9]*$/)){
+        marcaError.innerHTML = 'Nr.marca incorect';
+        return false;
+    }
+    marcaError.innerHTML = '<i class="fa fa-check icon"></i>';
+    return true;
+}
+
+function validateForm(){
+    if(!validateNume() || !validatePrenume() || !validateMarca()){
+        submitError.innerHTML = 'Exista o eroare';
+        return false;
+    }
+}
+
+</script>
+</body>
+</html>
+

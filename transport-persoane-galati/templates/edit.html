@@ -1,0 +1,11 @@
+{% extends "layouts/layout.html" %}
+{% block content %}
+  <h1> Modifica Marca </h1>
+    <form action="/update/{{marca.id}}"  id="input-container" method="POST">
+        <div class="input-container">
+            <i class="fa fa-key icon"></i>
+            <input type="text" class="input-field" name="trs_id" placeholder="Marca" value="{{marca.trs_id}}">
+        </div>
+            <button type="submit" class="btn btn-primary btn-block">Modifica</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "layouts/layout.html" %}
+{% block content %}
+  <div class="content">
+    <br/>
+    {% if rute %}
+    <div class="content">
+      <table class="list" id="custom">
+        <tr><th>Rute</th></tr>
+        {% for tid, tname in rute %}
+        <tr>
+          <td><a href="../traseul/{{tid}}">{{tname}}</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% else %}
+      <div class="warning">Nu exista rezultate!</div>
+    {% endif %}
+  </div>
+{% endblock content %}
