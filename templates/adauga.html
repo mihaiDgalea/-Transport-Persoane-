@@ -1,0 +1,36 @@
+{% extends "layouts/layout.html" %}
+{% block content %}
+  {%if error_statement%}
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      {{ error_statement }}
+    </div>
+  {% endif %}
+  <div class="container1">
+    <form class="input-span" action="{{url_for('add_soferi')}}" style="max-width:500px;margin:auto" name="myform" method="POST">
+      <i class="fas fa-paper-plane"></i>
+
+      <div class="input-group">
+        <i class="fa fa-user icon"></i>
+        <input type="text" class="input-field" name="nume" value="{{nume}}" placeholder="Nume" id="contact-nume" onkeyup="validateNume()">
+        <span id="nume-error"></span>
+      </div>
+      <br>
+      <div class="input-group">
+        <i class="fa fa-user icon"></i>
+        <input type="text" class="input-field" name="prenume" value="{{prenume}}" placeholder="Prenume" id="contact-prenume" onkeyup="validatePrenume()">
+        <span id="prenume-error"></span>
+      </div>
+      <br>
+      <div class="input-group">
+        <i class="fa fa-key icon"></i>
+        <input type="text" class="input-field" name="trs_id" value="{{marca}}" placeholder="Marca" id="contact-marca" onkeyup="validateMarca()">
+        <span id="marca-error"></span>
+      </div>
+      <br>
+      <button type="submit" onkeyup="return validateForm()">Adauga</button>
+      <span id="submit-error"></span>
+    </form>
+  </div>
+
+{% endblock content%}
