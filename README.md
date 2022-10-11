@@ -1,4 +1,5 @@
-Gaalea Mihai # Transport Persoane
+# Gaalea Mihai
+# Transport Persoane
 
 Proiectul este model pentru cursul Python full-stack si reprezinta site-ul de administrare a activitatilor unei institutii de transport persoane .
 
